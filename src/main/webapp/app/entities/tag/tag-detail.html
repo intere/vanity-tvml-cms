@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span translate="vanityTvmlApp.tag.detail.title">Tag</span> {{vm.tag.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="vanityTvmlApp.tag.name">Name</span></dt>
+        <dd>
+            <span>{{vm.tag.name}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.tag.description">Description</span></dt>
+        <dd>
+            <span>{{vm.tag.description}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.tag.tagImageURLString">Tag Image URL String</span></dt>
+        <dd>
+            <span>{{vm.tag.tagImageURLString}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.tag.subtitle">Subtitle</span></dt>
+        <dd>
+            <span>{{vm.tag.subtitle}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

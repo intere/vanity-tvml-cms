@@ -1,0 +1,16 @@
+version: '2'
+services:
+    vanitytvml-app:
+        image: vanitytvml
+        external_links:
+            - vanitytvml-mongodb:mongodb
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=VanityTVML
+        ports:
+            - 8080:8080
+    vanitytvml-mongodb:
+        extends:
+            file: mongodb.yml
+            service: vanitytvml-mongodb

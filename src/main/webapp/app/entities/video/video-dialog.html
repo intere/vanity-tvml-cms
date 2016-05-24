@@ -1,0 +1,138 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myVideoLabel" translate="vanityTvmlApp.video.home.createOrEditLabel">Create or edit a Video</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.video.id">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.video.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.videoURLString" for="field_videoURLString">Video URL String</label>
+            <input type="text" class="form-control" name="videoURLString" id="field_videoURLString"
+                    ng-model="vm.video.videoURLString"
+                    required ng-minlength="1" />
+            <div ng-show="editForm.videoURLString.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.videoURLString.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.videoURLString.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                    This field is required to be at least 1 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.buttonTitle" for="field_buttonTitle">Button Title</label>
+            <input type="text" class="form-control" name="buttonTitle" id="field_buttonTitle"
+                    ng-model="vm.video.buttonTitle"
+                    required ng-minlength="1" />
+            <div ng-show="editForm.buttonTitle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.buttonTitle.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.buttonTitle.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                    This field is required to be at least 1 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.overviewTitle" for="field_overviewTitle">Overview Title</label>
+            <input type="text" class="form-control" name="overviewTitle" id="field_overviewTitle"
+                    ng-model="vm.video.overviewTitle"
+                    required ng-minlength="1" ng-maxlength="50" />
+            <div ng-show="editForm.overviewTitle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.overviewTitle.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.overviewTitle.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                    This field is required to be at least 1 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.overviewTitle.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.overviewSubtitle" for="field_overviewSubtitle">Overview Subtitle</label>
+            <input type="text" class="form-control" name="overviewSubtitle" id="field_overviewSubtitle"
+                    ng-model="vm.video.overviewSubtitle"
+                    ng-maxlength="80" />
+            <div ng-show="editForm.overviewSubtitle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.overviewSubtitle.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="80">
+                    This field cannot be longer than 80 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.overviewDescription" for="field_overviewDescription">Overview Description</label>
+            <input type="text" class="form-control" name="overviewDescription" id="field_overviewDescription"
+                    ng-model="vm.video.overviewDescription"
+                    required ng-minlength="1" />
+            <div ng-show="editForm.overviewDescription.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.overviewDescription.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.overviewDescription.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                    This field is required to be at least 1 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.overviewImageURLString" for="field_overviewImageURLString">Overview Image URL String</label>
+            <input type="text" class="form-control" name="overviewImageURLString" id="field_overviewImageURLString"
+                    ng-model="vm.video.overviewImageURLString"
+                    required ng-minlength="1" />
+            <div ng-show="editForm.overviewImageURLString.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.overviewImageURLString.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.overviewImageURLString.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                    This field is required to be at least 1 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="vanityTvmlApp.video.tagName" for="field_tagName">Tag Name</label>
+            <input type="text" class="form-control" name="tagName" id="field_tagName"
+                    ng-model="vm.video.tagName"
+                    required ng-minlength="1" />
+            <div ng-show="editForm.tagName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tagName.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.tagName.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                    This field is required to be at least 1 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

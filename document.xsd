@@ -1,0 +1,952 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="document">
+    <xs:annotation>
+      <xs:documentation>Copyright (C) 2016 Apple Inc. All Rights Reserved.
+See LICENSE.txt for this sample’s licensing information</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="head">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="style"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="alertTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="background">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="img">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="src"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="title"/>
+              <xs:element name="button" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="text"/>
+                    <xs:element name="badge" minOccurs="0">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="src"/>
+                            <xs:attribute type="xs:string" name="style"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="disabled" use="optional"/>
+                  <xs:attribute type="xs:string" name="autoHighlight" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="descriptiveAlertTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="title"/>
+              <xs:element name="shelf">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="img">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="src" use="optional"/>
+                                        <xs:attribute type="xs:short" name="width" use="optional"/>
+                                        <xs:attribute type="xs:short" name="height" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="title">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="class" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="button" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="text"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ratingTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="title"/>
+              <xs:element name="ratingBadge">
+                <xs:annotation>
+                  <xs:documentation>Add event listener of type "change" which will be called if user rates. the new value is in event dictionary which is a value between 0.2 (1 star) - 1.0 (5 stars)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute type="xs:float" name="value"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="listTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="list">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="header">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="listItemLockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="title"/>
+                                <xs:element name="decorationImage" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="src" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="relatedContent">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="lockup">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="img">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="src" use="optional"/>
+                                                    <xs:attribute type="xs:short" name="width" use="optional"/>
+                                                    <xs:attribute type="xs:short" name="height" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="description">
+                                              <xs:complexType mixed="true">
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="br" maxOccurs="unbounded" minOccurs="0"/>
+                                                </xs:sequence>
+                                                <xs:attribute type="xs:string" name="class" use="optional"/>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="documentURL" use="optional"/>
+                              <xs:attribute type="xs:string" name="menuBarDocumentURL" use="optional"/>
+                              <xs:attribute type="xs:string" name="searchDocumentURL" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="tumblerItem">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                          <xs:element type="xs:string" name="subtitle"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:byte" name="numberOfItemsToCreate"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="compilationTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="background">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="img">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="src"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="list">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="relatedContent">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="itemBanner">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="row">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="buttonLockup" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="badge">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="src" use="optional"/>
+                                                    <xs:attribute type="xs:string" name="class" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:string" name="title"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="header">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                          <xs:element type="xs:string" name="subtitle"/>
+                          <xs:element name="row">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="text" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="section" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="description" minOccurs="0">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="allowsZooming"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="listItemLockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="img">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="src" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="width" use="optional"/>
+                                        <xs:attribute type="xs:byte" name="height" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:string" name="title"/>
+                                <xs:element type="xs:string" name="subtitle"/>
+                                <xs:element type="xs:string" name="decorationLabel"/>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="autoHighlight" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="paradeTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="list">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="header">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="listItemLockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="title"/>
+                                <xs:element name="relatedContent" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="imgDeck">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="img" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="src" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="relatedContent">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="imgDeck">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="img" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="src" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="formTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="banner">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                    <xs:element name="description">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="class"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="textField"/>
+              <xs:element name="footer">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="button">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="text"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="loadingTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="activityIndicator">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="stackTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="collectionList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="carousel">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="section">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="lockup" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="img">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute type="xs:string" name="src" use="optional"/>
+                                              <xs:attribute type="xs:short" name="width" use="optional"/>
+                                              <xs:attribute type="xs:short" name="height" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="overlay">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="img" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class" use="optional"/>
+                                                    <xs:attribute type="xs:string" name="src" use="optional"/>
+                                                    <xs:attribute type="xs:short" name="width" use="optional"/>
+                                                    <xs:attribute type="xs:short" name="height" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="title">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="subtitle">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="text" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute type="xs:string" name="class" use="optional"/>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="shelf" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="header">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="title"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="section">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="lockup" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="img">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute type="xs:string" name="src" use="optional"/>
+                                              <xs:attribute type="xs:short" name="width" use="optional"/>
+                                              <xs:attribute type="xs:short" name="height" use="optional"/>
+                                              <xs:attribute type="xs:string" name="class" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:string" name="title" minOccurs="0"/>
+                                      <xs:element name="overlay">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="progressBar" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:attribute type="xs:float" name="value"/>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="badge" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class"/>
+                                                    <xs:attribute type="xs:string" name="src"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="title" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="subtitle" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="class"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute type="xs:string" name="class" use="optional"/>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="card" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="title">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute type="xs:string" name="class"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="subtitle">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute type="xs:string" name="class"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute type="xs:string" name="class"/>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mainTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="background">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="img" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="src" use="optional"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="audio">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="asset">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="id"/>
+                                  <xs:attribute type="xs:string" name="src"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="menuBar">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="menuItem" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="title"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="oneupTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="section">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="lockup" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="img">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="src" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:string" name="title"/>
+                          <xs:element type="xs:string" name="subtitle"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="mode"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="searchTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="searchField"/>
+              <xs:element name="separator">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="segmentBar">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="segmentBarItem" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="title"/>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="value" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="id"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="text">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="id"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="list">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="header">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="title"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="listItemLockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="title">
+                                  <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                      <xs:element name="span">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="b"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="value" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="id"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="shelf">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="header">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="title"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="img">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="src" use="optional"/>
+                                        <xs:attribute type="xs:short" name="width" use="optional"/>
+                                        <xs:attribute type="xs:short" name="height" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="title">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="class" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="id"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="collectionList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="shelf">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="section">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="id"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="id"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="grid">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="id"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="id"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="showcaseTemplate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="background">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="img">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="src"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="banner">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                    <xs:element name="row">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="button">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="text"/>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="slideshowImageURLs"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="carousel">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="section">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lockup" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="img">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="src" use="optional"/>
+                                        <xs:attribute type="xs:short" name="width" use="optional"/>
+                                        <xs:attribute type="xs:short" name="height" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:string" name="title"/>
+                                <xs:element type="xs:string" name="subtitle"/>
+                                <xs:element type="xs:string" name="description"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

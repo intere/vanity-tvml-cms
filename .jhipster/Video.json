@@ -1,0 +1,73 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "videoURLString",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        },
+        {
+            "fieldName": "buttonTitle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        },
+        {
+            "fieldName": "overviewTitle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "overviewSubtitle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "80"
+        },
+        {
+            "fieldName": "overviewDescription",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        },
+        {
+            "fieldName": "overviewImageURLString",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        },
+        {
+            "fieldName": "tagName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "video",
+    "pagination": "infinite-scroll"
+}

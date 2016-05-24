@@ -1,0 +1,36 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "tagImageURLString",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "1"
+        },
+        {
+            "fieldName": "subtitle",
+            "fieldType": "String"
+        }
+    ],
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "tag",
+    "pagination": "infinite-scroll"
+}

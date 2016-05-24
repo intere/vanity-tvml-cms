@@ -1,0 +1,68 @@
+<div>
+    <h2 translate="vanityTvmlApp.video.home.title">Videos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="video.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="vanityTvmlApp.video.home.createLabel">
+                        Create new Video
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoURLString"><span translate="vanityTvmlApp.video.videoURLString">Video URL String</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="buttonTitle"><span translate="vanityTvmlApp.video.buttonTitle">Button Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="overviewTitle"><span translate="vanityTvmlApp.video.overviewTitle">Overview Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="overviewSubtitle"><span translate="vanityTvmlApp.video.overviewSubtitle">Overview Subtitle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="overviewDescription"><span translate="vanityTvmlApp.video.overviewDescription">Overview Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="overviewImageURLString"><span translate="vanityTvmlApp.video.overviewImageURLString">Overview Image URL String</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tagName"><span translate="vanityTvmlApp.video.tagName">Tag Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="video in vm.videos track by video.id">
+                    <td><a ui-sref="video-detail({id:video.id})">{{video.id}}</a></td>
+                    <td>{{video.videoURLString}}</td>
+                    <td>{{video.buttonTitle}}</td>
+                    <td>{{video.overviewTitle}}</td>
+                    <td>{{video.overviewSubtitle}}</td>
+                    <td>{{video.overviewDescription}}</td>
+                    <td>{{video.overviewImageURLString}}</td>
+                    <td>{{video.tagName}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="video-detail({id:video.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="video.edit({id:video.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="video.delete({id:video.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

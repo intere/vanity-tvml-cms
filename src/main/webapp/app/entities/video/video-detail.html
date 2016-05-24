@@ -1,0 +1,42 @@
+
+<div>
+    <h2><span translate="vanityTvmlApp.video.detail.title">Video</span> {{vm.video.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span translate="vanityTvmlApp.video.videoURLString">Video URL String</span></dt>
+        <dd>
+            <span>{{vm.video.videoURLString}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.video.buttonTitle">Button Title</span></dt>
+        <dd>
+            <span>{{vm.video.buttonTitle}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.video.overviewTitle">Overview Title</span></dt>
+        <dd>
+            <span>{{vm.video.overviewTitle}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.video.overviewSubtitle">Overview Subtitle</span></dt>
+        <dd>
+            <span>{{vm.video.overviewSubtitle}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.video.overviewDescription">Overview Description</span></dt>
+        <dd>
+            <span>{{vm.video.overviewDescription}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.video.overviewImageURLString">Overview Image URL String</span></dt>
+        <dd>
+            <span>{{vm.video.overviewImageURLString}}</span>
+        </dd>
+        <dt><span translate="vanityTvmlApp.video.tagName">Tag Name</span></dt>
+        <dd>
+            <span>{{vm.video.tagName}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
