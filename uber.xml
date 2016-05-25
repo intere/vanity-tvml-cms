@@ -54,11 +54,30 @@ See LICENSE.txt for this sample’s licensing information
 	    <ratingBadge value="0.6"></ratingBadge>
 	</ratingTemplate>
   <listTemplate>
+    <banner>
+      <background>
+        <img src="/resources/banner.png" width="1920" height="360" />
+      </background>
+    </banner>
     <list>
       <header>
         <title>TVML Catalog</title>
       </header>
       <section>
+        <header>
+          <title>tvOS Tutorials</title>
+        </header>
+        <listItemLockup documentURL="/templates/alert/Index.xml" videoUrlString="https://s3-us-west-2.amazonaws.com/devslopesvideo/tvOS-xcode-font-size.mp4">
+          <title>Xcode Font Sizing</title>
+          <relatedContent>
+            <lockup>
+              <img src="/resources/xcode-font-icon.png" width="857" height="482" />
+              <title>Dynamically Changing Xcode Font Size</title>
+              <subtitle>Works on Xcode 7 and Beta</subtitle>
+              <description class="descriptionLayout">A lot of people have asked me how I shrink and grow font sizes in Xcode on the fly.  Well now you will learn how to do it too!</description>
+            </lockup>
+          </relatedContent>
+        </listItemLockup>
         <listItemLockup documentURL="/templates/alert/Index.xml">
           <title>Alerts</title>
           <decorationImage src="resource://chevron" />

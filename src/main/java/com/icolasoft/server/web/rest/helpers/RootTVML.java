@@ -9,9 +9,7 @@ import com.icolasoft.server.domain.tvml.generated.Document.ListTemplate.List.Hea
 import com.icolasoft.server.domain.tvml.generated.Document.ListTemplate.List.Section;
 import com.icolasoft.server.domain.tvml.generated.Document.ListTemplate.List.Section.ListItemLockup;
 import com.icolasoft.server.domain.tvml.generated.Document.ListTemplate.List.Section.ListItemLockup.RelatedContent;
-import com.icolasoft.server.domain.tvml.generated.Document.ListTemplate.List.Section.ListItemLockup.RelatedContent.Lockup;
-import com.icolasoft.server.domain.tvml.generated.Document.ListTemplate.List.Section.ListItemLockup.RelatedContent.Lockup.*;
-import javassist.runtime.Desc;
+
 
 /**
  * Created by einternicola on 5/23/16.
@@ -32,17 +30,15 @@ public class RootTVML {
             lockup.setDocumentURL(baseURL + "/api/tvml/" + tag.getId());
             lockup.setTitle(tag.getName());
             lockup.setRelatedContent(new RelatedContent());
-            lockup.getRelatedContent().setLockup(new Lockup());
-            Img img = new Img();
-            img.setSrc(tag.getTagImageURLString());
-            img.setWidth((short)824);
-            img.setHeight((short)466);
-            lockup.getRelatedContent().getLockup().setImg(img);
+            lockup.getRelatedContent().setLockup(new RelatedContent.Lockup());
+            lockup.getRelatedContent().getLockup().setImg(new RelatedContent.Lockup.Img());
+            lockup.getRelatedContent().getLockup().getImg().setSrc(tag.getTagImageURLString());
+            lockup.getRelatedContent().getLockup().getImg().setWidth(824);
+            lockup.getRelatedContent().getLockup().getImg().setHeight(466);
 
-            Description desc = new Description();
-            desc.setClazz("descriptionLayout");
-            desc.getContent().add(tag.getDescription());
-            lockup.getRelatedContent().getLockup().setDescription(desc);
+            lockup.getRelatedContent().getLockup().setDescription(new RelatedContent.Lockup.Description());
+            lockup.getRelatedContent().getLockup().getDescription().setClazz("descriptionLayout");
+            lockup.getRelatedContent().getLockup().getDescription().setValue(tag.getDescription());
 
             template.getList().getSection().getListItemLockup().add(lockup);
         }

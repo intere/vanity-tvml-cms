@@ -78,5 +78,17 @@ DocumentController.prototype.handleEvent = function(event) {
         const body = target.textContent;
         const alertDocument = createDescriptiveAlertDocument('', body);
         navigationDocument.presentModal(alertDocument);
+    } else if (target.tagName === 'listItemLockup') {
+        var videoUrl = target.getAttribute("videoUrlString");
+
+        if(videoUrl) {
+            var player = new Player();
+            var playlist = new Playlist();
+            var mediaItem = new MediaItem("video", videoUrl);
+
+            player.playlist = playlist;
+            player.playlist.push(mediaItem);
+            player.present();
+        }
     }
 };
