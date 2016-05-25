@@ -13,6 +13,7 @@ import com.icolasoft.server.domain.tvml.generated.Document;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -38,6 +39,9 @@ import java.util.Optional;
 public class TVMLController {
 
     private final Logger log = LoggerFactory.getLogger(TagResource.class);
+
+    @Value("#{servletContext.contextPath}")
+    private String servletContextPath;
 
     @Inject private TagRepository tagRepository;
     @Inject private VideoRepository videoRepository;
@@ -85,16 +89,14 @@ public class TVMLController {
              .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
      }
 
-    public static String getBaseUrl(HttpServletRequest request) throws URISyntaxException, MalformedURLException {
+    protected String getBaseUrl(HttpServletRequest request) throws URISyntaxException, MalformedURLException {
         URL url = new URL(request.getRequestURL().toString());
         String host  = url.getHost();
         String userInfo = url.getUserInfo();
         String scheme = url.getProtocol();
         Integer port = url.getPort();
-//        String path = String.valueOf(request.getAttribute("javax.servlet.forward.request_uri"));
-//        String query = String.valueOf(request.getAttribute("javax.servlet.forward.query_string"));
 
-        URI uri = new URI(scheme, userInfo, host, port, "", null, null);
+        URI uri = new URI(scheme, userInfo, host, port, servletContextPath, null, null);
         return uri.toString();
     }
 

@@ -39,7 +39,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('copy', function () {
-    return es.merge( 
+    return es.merge(
         gulp.src(config.app + 'i18n/**')
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist + 'i18n/'))
@@ -58,7 +58,13 @@ gulp.task('copy', function () {
         gulp.src([config.app + 'robots.txt', config.app + 'favicon.ico', config.app + '.htaccess'], { dot: true })
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist))
-        .pipe(gulp.dest(config.dist))
+        .pipe(gulp.dest(config.dist)),
+
+        // Added the static: TVML folder
+        gulp.src(config.app + 'tvml/**')
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(changed(config.dist + 'tvml/'))
+        .pipe(gulp.dest(config.dist + 'tvml/'))
     );
 });
 

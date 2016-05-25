@@ -19,7 +19,7 @@ spring:
             enabled: false # we use gulp + BrowserSync for livereload
     data:
         mongodb:
-            uri: mongodb://localhost:27017
+            uri: mongodb://mongodb:27017
             database: VanityTVML
     mail:
         host: localhost

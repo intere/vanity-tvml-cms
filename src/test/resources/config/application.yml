@@ -15,7 +15,7 @@ spring:
         name: VanityTVML
     data:
         mongodb:
-            host: localhost
+            host: mongodb
             port: 27117
             database: VanityTVML
     mail:
